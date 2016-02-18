@@ -6,7 +6,7 @@
 from commands import *
 import re
 
-COMMUNITY = 'RGSU_Network_Read'
+COMMUNITY = 'COMMUNITY'
 #       Состояние портов по документации
 DEFAULT_STATE = {'1': 'disabled', '2': 'blocking', '3': 'listening', '4': 'learning', '5': 'forwarding', '6': 'broken'}
 #       Определяем стиль написания линий для линка. Красный пунктир для заблокированного или выключенного порта.
