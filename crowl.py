@@ -6,7 +6,7 @@
 from commands import *
 import re
 
-COMMUNITY = 'YOU COMMUNITY'
+COMMUNITY = 'RGSU_Network_Read'
 #       Состояние портов по документации
 DEFAULT_STATE = {'1': 'disabled', '2': 'blocking', '3': 'listening', '4': 'learning', '5': 'forwarding', '6': 'broken'}
 #       Определяем стиль написания линий для линка. Красный пунктир для заблокированного или выключенного порта.
@@ -48,9 +48,11 @@ class Switch():
         def getRemotePort(self, key):
                 return self.local_ports_2_remote_ports.get(key, [''])
 
-for line in open("pika.txt") :
+print "Напишите имя файла с IP адресами: ",
+filename = raw_input()
+for line in open(filename) :
         sw = Switch()
-        #       Оперделенны переменные для запроса. Возвращают данные согласно названию переменной.
+        #       Определенны переменные для запроса. Возвращают данные согласно названию переменной.
         get_neighbors = 'snmpwalk -v2c -c '+COMMUNITY+' '+line.rstrip('\n')+' 1.0.8802.1.1.2.1.4.1.1.9.0'
         get_hostname = 'snmpwalk -v2c -c '+COMMUNITY+' '+line.rstrip('\n')+' iso.3.6.1.2.1.1.5.0'
         get_remote_ports_index_lldp = 'snmpwalk -v2c -c '+COMMUNITY+' '+line.rstrip('\n')+' 1.0.8802.1.1.2.1.4.1.1.7.0'
