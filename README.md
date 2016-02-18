@@ -1,4 +1,16 @@
 # l2_network_mapper_snmp_lldp_4_hp
+- The script for the construction of L2 network topology graphically (HP Switches). With graphviz tools
+- Скрипт для построения L2 топологии компьютерной сети (коммутаторы HP) в графическом виде. С помощью утилиты graphviz 
+
+##HOW USE
+user@linux:$ chmod +x crowl.py</br>
+user@linux:$ ./crowl.py > sheme.dot</br>
+user@linux:$ sfdp -x -Goverlap=scale  -Tpng sheme.dot -o sheme.png</br>
+OR </br>
+user@linux:$ circo -x -Goverlap=scale  -Tpng sheme.dot -o sheme.png</br>
+OR </br>
+user@linux:$ circo -x -Tpng .dot -o sheme.png</br>
+
 #RU
 - Подготовка:</br>
 a) Создайте файл где построчно будут указаны IP адреса свичей</br>
