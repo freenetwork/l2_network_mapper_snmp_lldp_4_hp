@@ -6,11 +6,11 @@
 from commands import *
 import re
 
-COMMUNITY = 'COMMUNITY'
+COMMUNITY = 'YOUR_COMMUNITY'
 #       Состояние портов по документации
-DEFAULT_STATE = {'1': 'disabled', '2': 'blocking', '3': 'listening', '4': 'learning', '5': 'forwarding', '6': 'broken'}
-#       Определяем стиль написания линий для линка. Красный пунктир для заблокированного или выключенного порта.
-STATE = {'1': '[color=white', '2': '[style=dashed, color=red', '3': '[color=black', '4': '[color=black', '5': '[color=black', '6': '[color=white'}
+DEFAULT_STATE = {'1': 'disabled', '2': 'blocking', '3': 'listening', '4': 'learning', '5': 'forwarding', '6': 'broken', '7': 'BpduError'}
+#       Определяем стиль написания линий для линка. Красный пунктир для заблокированного порта.
+STATE = {'1': '[color=white', '2': '[style=dashed, color=red', '3': '[color=black', '4': '[color=black', '5': '[color=black', '6': '[color=white', '7': '[color=red, style=dashed, penwidth=3.0'}
 
 #       Список классов. Список свичей.
 list_of_Switch = []
@@ -27,13 +27,21 @@ class Switch():
 
         def getPortState(self, search):
                 for key, value in self.local_ports_for_neighbors.iteritems():
-                        if search in value:
-                                return self.local_ports_state[key]
+                        for each in value:
+                                if each == search:
+                                        if self.local_ports_state.has_key(key):
+                                                return self.local_ports_state[key]
+                                        else:
+                                                return 'error'
 
         def getPortStateForDraw(self, search):
                 for key, value in self.local_ports_for_neighbors.iteritems():
-                        if search in value:
-                                return STATE[self.local_ports_state[key]]
+                        for each in value:
+                                if each == search:
+                                        if self.local_ports_state.has_key(key):
+                                                return STATE[self.local_ports_state[key]]
+                                        else:
+                                                return '[color=black'
 
         def getPort(self, search):
                 for key, value in self.local_ports_for_neighbors.iteritems():
@@ -76,7 +84,7 @@ for line in open(filename) :
                 neighbors = re.findall(r'"(.*?)"', text)
                 #       Получаем порты соседей свича
                 neighbors_ports = re.findall(r'1\.9\.0\.(.*?)\.[\d\.]', text)
-
+                
                 i = 0
                 while i < len(neighbors):
                         if neighbors[i] == '':
@@ -88,7 +96,6 @@ for line in open(filename) :
                 #       Передаем порты на которых находятся соседи. Порт ключ - соседи значение (массив)
                                 sw.local_ports_for_neighbors.setdefault(neighbors_ports[i], []).append(neighbors[i])
                                 i = i + 1
-
                 #       Получаем список портов свича: индекс - имя
                 text = getoutput(get_list_self_ports_name)
                 #       Определяем индекс локального порта
@@ -260,7 +267,7 @@ for each in list_of_Graph:
         hostname = each.hostname
         i = 0
         while i < len(each.neighbors):
-                print '"'+hostname+'" -- "'+each.neighbors[i]+'"'+each.line[i]+each.lineLabel[i]+' fontcolor="red" ];'
+                print '"'+hostname+'" -- "'+each.neighbors[i]+'"'+each.line[i]+each.lineLabel[i]+', fontcolor="red" ];'
                 i = i + 1
 print '}'
 
