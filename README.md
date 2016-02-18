@@ -1,4 +1,4 @@
-# l2_network_mapper_snmp_lldp-4_hp
+# l2_network_mapper_snmp_lldp_4_hp
 #RU
 - Подготовка:</br>
 a) Создайте файл где построчно будут указаны IP адреса свичей</br>
