@@ -5,11 +5,11 @@
 ##HOW USE
 user@linux:$ chmod +x crowl.py</br>
 user@linux:$ ./crowl.py > sheme.dot</br>
-user@linux:$ sfdp -x -Goverlap=scale  -Tpng sheme.dot -o sheme.png</br>
-OR </br>
 user@linux:$ circo -x -Goverlap=scale  -Tpng sheme.dot -o sheme.png</br>
-OR </br>
-user@linux:$ circo -x -Tpng .dot -o sheme.png</br>
+>OR </br>
+>user@linux:$ sfdp -x -Goverlap=scale  -Tpng sheme.dot -o sheme.png</br>
+>OR </br>
+>user@linux:$ circo -x -Tpng .dot -o sheme.png</br>
 
 #RU
 - Подготовка:</br>
