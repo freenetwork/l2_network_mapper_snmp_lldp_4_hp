@@ -36,7 +36,7 @@ Add these lines to the configuration of each of your HP devices to enable SNMP</
 >snmp-server community "YOU_SNMP_COMMUNITY" Operator</br>
 >snmp-server community "YOU_SNMP_COMMUNITY" Operator Unrestricted</br>
 
-# Features</br>
-Recursively discovery HP devices via SNMP(LLDP)</br>
-List self and neighbors name ports</br>
-List blocked path (red line dashed)</br>
+# Features:</br>
+- Recursively discovery HP devices via SNMP(LLDP)</br>
+- List self and neighbors name ports</br>
+- List blocked path (red line dashed)</br>
