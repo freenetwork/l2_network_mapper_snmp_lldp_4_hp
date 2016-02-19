@@ -1,4 +1,5 @@
 # l2_network_mapper_snmp_lldp_4_hp
+A dynamic network topology map provides an interactive, visualization of the connections between network elements (WHILE ONLY HP SWITCHES)
 - The script for the construction of L2 network topology graphically (HP Switches). With graphviz tools
 - Скрипт для построения L2 топологии компьютерной сети (коммутаторы HP) в графическом виде. С помощью утилиты graphviz 
 
@@ -34,3 +35,8 @@ c) You need enable snmp for every device in network</br>
 Add these lines to the configuration of each of your HP devices to enable SNMP</br>
 >snmp-server community "YOU_SNMP_COMMUNITY" Operator</br>
 >snmp-server community "YOU_SNMP_COMMUNITY" Operator Unrestricted</br>
+
+# Features
+Recursively discovery HP devices via SNMP(LLDP)
+List self and neighbors name ports
+List blocked path (red line dashed)
